@@ -1,0 +1,9 @@
+{
+	"version": 2,
+	"name": "yt_downloader",
+	"builds": [{ "src": "package.json", "use": "@now/next" }],
+	"routes": [
+		{ "src": "/", "dest": "/index"},
+		{ "src": "/about", "dest": "/about"}
+	]
+}

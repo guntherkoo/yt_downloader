@@ -1,0 +1,6 @@
+README.md
+.next
+build
+yarn.lock
+node_modules
+.now
