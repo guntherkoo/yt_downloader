@@ -16,6 +16,17 @@ class Meta extends Component<MetaProps> {
 		url: 'https://www.guntherkoo.com',
 	}
 
+    setGoogleAnalytics() {
+        return {
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-23557390-11');
+            `
+        }
+    }
+
 	render() {
 		const {
 			title,
@@ -40,6 +51,8 @@ class Meta extends Component<MetaProps> {
 	            <meta property='twitter:description' content={description && description} />
 	            <meta property='twitter:image' content={image && image} />
 	            <meta property='twitter:image:src' content={image && image} />
+                <script async src='https://www.googletagmanager.com/gtag/js?id=UA-23557390-11'/>
+                <script dangerouslySetInnerHTML={this.setGoogleAnalytics()} />
 			</Head>
 		)
 	}

@@ -1,16 +1,39 @@
 import React, { Component } from 'react';
 import { NextPageContext } from 'next';
+import ytdl from 'ytdl-core';
 
 import styles from './index.scss';
 
 // any modifications to the default context, e.g. query types
 interface Context extends NextPageContext {}
 
-class Index extends Component {
-	static async getInitialProps(ctx: Context) {
-		console.log(ctx.query, '!@!@');
+interface IndexProps {
+  domain?: string;
+}
 
-		return {}
+interface IndexState {
+}
+
+class Index extends Component<IndexProps, IndexState> {
+	static async getInitialProps(ctx: Context) {
+		console.log('############# YT Download Landing Page');
+
+		const is_prod = process.env.NODE_ENV === 'production';
+		const domain = `http${is_prod ? 's' : ''}://${ctx.req && ctx.req.headers.host}`;
+
+		return { domain }
+	}
+
+	private inputRef = React.createRef<HTMLInputElement>();
+
+	handleOnClick = () => {
+		const { domain } = this.props;
+
+		if (this.inputRef.current) {
+			const url = this.inputRef.current.value;
+
+			window.open(`${domain}/download?url=${url}`);
+		}
 	}
 
 	render() {
@@ -25,12 +48,14 @@ class Index extends Component {
 					</h3>
 					<input
 						id='url-input'
+						ref={this.inputRef}
 						className={styles('input')}
 						placeholder='https://www.youtube.com/watch?v=qATOgfmgRKo...'
 					/>
 					<button
 						type='button'
 						id='btn-download'
+						onClick={this.handleOnClick}
 						className={styles('btn-download')}
 					>
 						Download Now
