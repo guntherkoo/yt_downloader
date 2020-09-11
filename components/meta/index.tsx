@@ -10,9 +10,9 @@ type MetaProps = {
 
 class Meta extends Component<MetaProps> {
 	static defaultProps = {
-		title: 'Typescript + NextJS Boilerplate',
-		description: 'Typescript + NextJS Boilerplate by Gunther Koo',
-		image: 'https://images.prismic.io/koofolio/6abc0a59-b849-4e35-a73b-ea9faf76ff2a_Screen+Shot+2020-02-28+at+1.43.17+PM.png',
+		title: 'YT Downloader',
+		description: 'Quick, download your favorite YouTube videos!',
+		image: 'https://www.kapwing.com/resources/content/images/2019/07/final_5d1a76214bc82f00133c2e6a_500831.jpg',
 		url: 'https://www.guntherkoo.com',
 	}
 
@@ -26,7 +26,7 @@ class Meta extends Component<MetaProps> {
 
 		return (
 			<Head>
-				<title>{title ? title : 'Gunther Koo | Front-End UX Engineer'}</title>
+				<title>{title}</title>
 	            <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
 	            <link rel='icon' sizes='64x64' href='/static/favicon.ico' />
 
