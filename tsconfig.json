@@ -36,7 +36,6 @@
 	],
 	"include": [
 		"next-env.d.ts",
-		"react.d.ts",
 		"declaration.d.ts",
 		"**/*.ts",
 		"**/*.tsx"

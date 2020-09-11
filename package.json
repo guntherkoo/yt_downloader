@@ -5,8 +5,8 @@
 	"main": "server.js",
 	"scripts": {
 		"dev": "node server.js NODE_ENV=development",
-		"build": "next build NODE_ENV=production",
-		"now-build": "next build NODE_ENV=production",
+		"build": "next build",
+		"now-build": "next build",
 		"storybook": "start-storybook -p 9001 -c .storybook",
 		"build-storybook": "build-storybook -s public"
 	},

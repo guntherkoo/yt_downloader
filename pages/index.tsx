@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NextPageContext } from 'next';
-import ytdl from 'ytdl-core';
 
 import styles from './index.scss';
 
@@ -18,8 +17,8 @@ class Index extends Component<IndexProps, IndexState> {
 	static async getInitialProps(ctx: Context) {
 		console.log('############# YT Download Landing Page');
 
-		const is_prod = process.env.NODE_ENV === 'production';
-		const domain = `http${is_prod ? 's' : ''}://${ctx.req && ctx.req.headers.host}`;
+		const is_dev = process.env.NODE_ENV === 'development';
+		const domain = `http${is_dev ? '' : 's'}://${ctx.req && ctx.req.headers.host}`;
 
 		return { domain }
 	}
