@@ -24,9 +24,8 @@ app
 		});
 
 		server.get('/download', async (req, res) => {
-			const url = req.query.url;
-
 			try {
+				let url = req.query.url;
 				let info = await ytdl.getInfo(url);
 				const video_title = info.videoDetails.title.replace(/\s+/g, '-');
 

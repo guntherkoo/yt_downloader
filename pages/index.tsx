@@ -26,12 +26,9 @@ class Index extends Component<IndexProps, IndexState> {
 	private inputRef = React.createRef<HTMLInputElement>();
 
 	handleOnClick = () => {
-		const { domain } = this.props;
-
 		if (this.inputRef.current) {
 			const url = this.inputRef.current.value;
-
-			window.open(`${domain}/download?url=${url}`);
+			window.location.href = window.location.href+`download?url=${url}`;
 
 			this.inputRef.current.value = '';
 		}
