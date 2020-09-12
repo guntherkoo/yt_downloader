@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
-const compression = require('compression');
+// const compression = require('compression');
+const cors = require('cors');
 const ytdl = require('ytdl-core');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
@@ -13,7 +14,7 @@ app
 	.prepare()
 	.then(() => {
 		const server = express();
-		server.use(compression());
+		server.use(cors());
 
 		server.get('/favicon.ico', (req, res) => {
 			console.log(req, res, '!@!@');
