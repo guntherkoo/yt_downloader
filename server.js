@@ -22,18 +22,27 @@ app
 			);
 		});
 
-		server.get('/download', (req, res) => {
+		server.get('/download', async (req, res) => {
 			const url = req.query.url;
 
-			// let info = await ytdl.getInfo(url);
-			// const video_title = info.videoDetails.title.replace(/\s+/g, '-');
+			try {
+				let info = await ytdl.getInfo(url);
+				const video_title = info.videoDetails.title.replace(/\s+/g, '-');
 
-			res.header('Content-Disposition', `attachment; filename="video.mp4"`);
+				res.header('Content-Disposition', `attachment; filename='${video_title}.mp4'`);
 
-			ytdl(url, {
-		    	format: 'mp4',
-		    	quality: 'highest',
-		    }).pipe(res);
+				ytdl(url, {
+			    	format: 'mp4',
+			    	quality: 'highest',
+			    }).pipe(res);
+			}
+
+			catch (err) {
+				console.log('Error locating video...', err);
+
+				return app.render(req, res, '/404');
+			}
+				
 		});
 
     	server.get('*', (req, res) => handler(req, res))
