@@ -25,24 +25,15 @@ app
 		server.get('/download', async (req, res) => {
 			const url = req.query.url;
 
-			try {
-				let info = await ytdl.getInfo(url);
-				const video_title = info.videoDetails.title.replace(/\s+/g, '-');
+			let info = await ytdl.getInfo(url);
+			const video_title = info.videoDetails.title.replace(/\s+/g, '-');
 
-				res.header('Content-Disposition', `attachment; filename="${video_title}.mp4"`);
+			res.header('Content-Disposition', `attachment; filename="${video_title}.mp4"`);
 
-				ytdl(url, {
-			    	format: 'mp4',
-			    	quality: 'highest',
-			    }).pipe(res);
-			}
-
-			catch (err) {
-				console.log('Error locating video...', err);
-
-				return app.render(req, res, '/404');
-			}
-				
+			ytdl(url, {
+		    	format: 'mp4',
+		    	quality: 'highest',
+		    }).pipe(res);
 		});
 
     	server.get('*', (req, res) => handler(req, res))
