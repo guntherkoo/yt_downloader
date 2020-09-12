@@ -35,6 +35,8 @@ app
 			    	format: 'mp4',
 			    	quality: 'highest',
 			    }).pipe(res);
+
+			    return app.render(req, res, '/Download');
 			}
 
 			catch (err) {
