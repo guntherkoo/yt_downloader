@@ -32,6 +32,8 @@ class Index extends Component<IndexProps, IndexState> {
 			const url = this.inputRef.current.value;
 
 			window.open(`${domain}/download?url=${url}`);
+
+			this.inputRef.current.value = '';
 		}
 	}
 
