@@ -22,13 +22,13 @@ app
 			);
 		});
 
-		server.get('/download', async (req, res) => {
+		server.get('/download', (req, res) => {
 			const url = req.query.url;
 
-			let info = await ytdl.getInfo(url);
-			const video_title = info.videoDetails.title.replace(/\s+/g, '-');
+			// let info = await ytdl.getInfo(url);
+			// const video_title = info.videoDetails.title.replace(/\s+/g, '-');
 
-			res.header('Content-Disposition', `attachment; filename="${video_title}.mp4"`);
+			res.header('Content-Disposition', `attachment; filename="video.mp4"`);
 
 			ytdl(url, {
 		    	format: 'mp4',
